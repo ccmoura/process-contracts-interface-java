@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 import model.entities.Contract;
 import model.entities.Installment;
+import model.services.PagSeguro;
 import model.services.Paypal;
 import model.services.ProcessContract;
 
@@ -41,7 +42,7 @@ public class Program {
         double value = sc.nextDouble();
         System.out.print("Enter number of installments: ");
         int months = sc.nextInt();
-        ProcessContract processContract = new ProcessContract(months, new Paypal());
+        ProcessContract processContract = new ProcessContract(months, new PagSeguro());
         Contract contract = new Contract(number, date, value);
         double[] installments = processContract.processContracts(value, contract);
         
